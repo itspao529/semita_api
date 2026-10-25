@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
+console.log("API_KEY longitud:", (process.env.API_KEY || "").length);
 app.use(cors());
 app.use(express.json());
 
@@ -19,7 +20,7 @@ function calcularMotorAuto(d) {
 }
 
 function exigirClave(req, res, next) {
-  const clave = process.env.API_KEY;
+  const clave = (process.env.API_KEY || "").trim();
   if (clave && req.get("X-API-Key") !== clave) {
     return res.status(401).json({ error: "No autorizado" });
   }
