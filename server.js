@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-console.log("API_KEY longitud:", (process.env.API_KEY || "").length);
 app.use(cors());
 app.use(express.json());
 
